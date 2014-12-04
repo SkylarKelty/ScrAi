@@ -1,0 +1,4 @@
+scrabble-ai
+===========
+
+Scrabble AI
