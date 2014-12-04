@@ -1,6 +1,8 @@
 <?php
 /**
  * Core Library.
+ * 
+ * @author Skylar Kelty <S.Kelty@kent.ac.uk>
  */
 
 if (!defined('CLI_SCRIPT')) {
@@ -13,7 +15,7 @@ spl_autoload_register(function($class) {
 
     $parts = explode('\\', $class);
 
-    $filename = $CFG->dirroot . '/classes/' . implode('/', $parts) . '.php';
+    $filename = $CFG->dirroot . '/src/classes/' . implode('/', $parts) . '.php';
     if (file_exists($filename)) {
         require_once($filename);
     }

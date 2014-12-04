@@ -7,4 +7,9 @@ $PAGE->set_title("Rapid Protoyping Framework Home");
 
 echo $OUTPUT->header();
 
+$board = new \Scrabble\Board();
+
+$renderer = new \Renderer\Board();
+echo $renderer->render($board);
+
 echo $OUTPUT->footer();

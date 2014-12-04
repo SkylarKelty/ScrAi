@@ -1,0 +1,32 @@
+.page-content {
+	padding-top: 60px;
+}
+
+table td {
+	padding: 15px;
+}
+
+table tr:nth-child(even) td:nth-child(even),
+table tr:nth-child(odd) td:nth-child(odd) {
+	background-color: #eee;
+}
+
+table tr td.bonus_ST {
+	background-color: #0DFF94 !important;
+}
+
+table tr td.bonus_2W {
+	background-color: #0C95E8 !important;
+}
+
+table tr td.bonus_3W {
+	background-color: #0D64FF !important;
+}
+
+table tr td.bonus_2L {
+	background-color: #00E2FF !important;
+}
+
+table tr td.bonus_3L {
+	background-color: #0CE8C5 !important;
+}
