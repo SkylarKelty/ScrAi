@@ -40,4 +40,16 @@ $(function() {
 		$("#cellvalue").val("");
 		$("#cellinput").fadeOut();
 	});
+
+	$("#suggest").on('click', function() {
+		$.getJSON("ajax/suggest.php", function(data) {
+			$.each(data, function(row) {
+				$.each(data[row], function(column) {
+					$("td[data-row=" + row + "][data-column=" + column + "]")
+						.addClass("suggest")
+							.html(data[row][column]);
+				});
+			});
+		});
+	});
 })

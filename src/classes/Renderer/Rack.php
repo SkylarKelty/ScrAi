@@ -20,7 +20,7 @@ class Rack
 		echo '<tr>';
 		foreach ($rack->get_tiles() as $tile) {
 			$value = $rack->get_tile($tile);
-			echo "<td data-rackid=\"{$i}\">{$value}</td>";
+			echo "<td data-rackid=\"{$tile}\">{$value}</td>";
 		}
 		echo '</tr>';
 		echo '</table>';

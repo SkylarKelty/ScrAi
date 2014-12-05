@@ -33,4 +33,6 @@ $rack = new \Scrabble\Rack();
 $renderer = new \Renderer\Rack();
 echo $renderer->render($rack);
 
+echo '<div id="suggest-container"><button type="button" id="suggest" class="btn btn-default btn-lg">Suggest</button></div>';
+
 echo $OUTPUT->footer();
