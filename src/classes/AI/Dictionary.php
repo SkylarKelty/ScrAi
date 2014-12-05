@@ -29,7 +29,7 @@ class Dictionary
 	private function generate_wordlist() {
 		$this->_count = 0;
 
-		$file = "/usr/share/dict/british-english";
+		$file = "/usr/share/dict/words";
 		$contents = file_get_contents($file);
 
 		preg_match_all("/\b([a-z]+)\b/", $contents, $matches, PREG_SET_ORDER);
