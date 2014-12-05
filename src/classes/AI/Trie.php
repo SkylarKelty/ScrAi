@@ -130,6 +130,8 @@ class Trie
 		}
 
 		$child = $this->_children[$char];
-		return $child->lookup($letters, $pos + 1);
+		$result = $child->lookup($letters, $pos + 1);
+
+		return array_merge($this->_words, $result);
 	}
 }
