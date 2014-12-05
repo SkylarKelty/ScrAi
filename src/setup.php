@@ -50,3 +50,31 @@ if (!defined('CLI_SCRIPT') || !CLI_SCRIPT) {
         die("Must be run from CLI.");
     }
 }
+
+function format_bytes($bytes) {
+    $unit = 'b';
+
+    if ($bytes > 10000) {
+        $bytes = $bytes / 1024;
+        $unit = 'kb';
+    }
+
+    if ($bytes > 10000) {
+        $bytes = $bytes / 1024;
+        $unit = 'mb';
+    }
+
+    if ($bytes > 1000) {
+        $bytes = $bytes / 1024;
+        $unit = 'gb';
+    }
+
+    return round($bytes, 2) . $unit;
+}
+
+function print_memory() {
+    $memory = memory_get_usage();
+    $peak = memory_get_peak_usage();
+
+    echo format_bytes($memory) . " / " . format_bytes($peak) . "\n";
+}
