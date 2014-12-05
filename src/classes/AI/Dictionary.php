@@ -19,7 +19,7 @@ class Dictionary
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->_wordlist = Trie::create_root_node();
+		$this->_wordlist = array();
 		$this->generate_wordlist();
 	}
 
@@ -27,8 +27,6 @@ class Dictionary
 	 * Grab valid words from dictionary.
 	 */
 	private function generate_wordlist() {
-		gc_collect_cycles();
-		gc_disable();
 		$this->_count = 0;
 
 		$file = "/usr/share/dict/british-english";
@@ -37,9 +35,7 @@ class Dictionary
 		preg_match_all("/\b([a-z]+)\b/", $contents, $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
 			$this->_count++;
-			$letters = str_split($match[0]);
-			sort($letters);
-			$this->_wordlist->add_word($letters, $match[0]);
+			$this->_wordlist[$match[0]] = str_split($match[0]);
 		}
 	}
 
@@ -54,7 +50,25 @@ class Dictionary
 	 * Lookup a set of letters in the dictionary.
 	 */
 	public function lookup(array $letters) {
-		sort($letters);
-		return $this->_wordlist->lookup($letters);
+		$results = array();
+		foreach ($this->_wordlist as $key => $arr) {
+			$lookup = $letters;
+			$valid = true;
+			foreach ($arr as $letter) {
+				$lookupindex = array_search($letter, $lookup);
+				if ($lookupindex === false) {
+					$valid = false;
+					break;
+				}
+
+				unset($lookup[$lookupindex]);
+			}
+
+			if ($valid) {
+				$results[] = $key;
+			}
+		}
+
+		return $results;
 	}
 }
