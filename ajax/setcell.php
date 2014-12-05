@@ -1,4 +1,9 @@
 <?php
+/**
+ * Core Library.
+ * 
+ * @author Skylar Kelty <S.Kelty@kent.ac.uk>
+ */
 
 require_once(dirname(__FILE__) . '/../config.php');
 

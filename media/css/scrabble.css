@@ -8,7 +8,20 @@
 }
 
 table {
-	margin-left: 270px;
+	margin: 0 auto;
+	border: 1px solid #777;
+}
+
+table.rack {
+	margin: 30px auto 0 auto;
+}
+
+table.rack td {
+	border-right: 1px solid #777;
+}
+
+table.rack td:last-child {
+	border-right: 0;
 }
 
 table td {
@@ -22,7 +35,7 @@ table td {
 
 table tr:nth-child(even) td:nth-child(even),
 table tr:nth-child(odd) td:nth-child(odd) {
-	background-color: #eee;
+	background-color: #EEE;
 }
 
 table tr td.bonus_ST {

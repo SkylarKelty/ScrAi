@@ -1,4 +1,9 @@
 <?php
+/**
+ * Core Library.
+ * 
+ * @author Skylar Kelty <S.Kelty@kent.ac.uk>
+ */
 
 require_once('config.php');
 
@@ -21,8 +26,11 @@ echo '
 ';
 
 $board = new \Scrabble\Board();
-
 $renderer = new \Renderer\Board();
 echo $renderer->render($board);
+
+$rack = new \Scrabble\Rack();
+$renderer = new \Renderer\Rack();
+echo $renderer->render($rack);
 
 echo $OUTPUT->footer();
