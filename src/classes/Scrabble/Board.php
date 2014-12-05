@@ -54,6 +54,22 @@ class Board {
 	}
 
 	/**
+	 * Returns true if the board is currently empty.
+	 */
+	public function is_empty() {
+		foreach ($this->get_rows() as $row) {
+			foreach ($this->get_columns() as $column) {
+				$cell = $this->get_cell($row, $column);
+				if (!empty($cell->get_value())) {
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	/**
 	 * Blank the tile set.
 	 */
 	private function clear_board() {

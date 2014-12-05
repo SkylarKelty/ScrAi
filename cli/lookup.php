@@ -22,11 +22,11 @@ $point = microtime(true) - $time;
 echo "Prepared lookup table of {$count} words in {$point}s.\n";
 print_memory();
 
-$result = $dictionary->lookup($letters);
-print_r($result);
+$results = $dictionary->lookup($letters);
+print_r($results);
 
 $point = microtime(true) - $time;
 
-$count = count($result);
+$count = count($results);
 echo "Found {$count} results in {$point}s.\n";
 print_memory();

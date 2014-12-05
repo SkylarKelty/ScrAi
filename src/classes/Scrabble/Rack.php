@@ -47,7 +47,7 @@ class Rack
 	 * Return a specific tile.
 	 */
 	public function set_tile($tile, $value) {
-		$this->_data[$tile] = $value;
+		$this->_data[$tile] = strtolower($value);
 	}
 
 	/**
@@ -59,6 +59,13 @@ class Rack
 		foreach ($this->get_tiles() as $tile) {
 			$this->set_tile($tile, '');
 		}
+	}
+
+	/**
+	 * Return all letters in the rack.
+	 */
+	public function get_letters() {
+		return array_values($this->_data);
 	}
 
 	/**
@@ -75,8 +82,8 @@ class Rack
 	 */
 	public function serialize() {
 		$tiles = array();
-		foreach ($this->get_tiles() as $tile) {
-			$tiles[] = $this->get_tile($tile);
+		foreach ($this->get_letters() as $letter) {
+			$tiles[] = $letter;
 		}
 
 		return implode('|', $tiles);
