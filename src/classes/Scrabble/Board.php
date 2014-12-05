@@ -17,8 +17,15 @@ class Board {
 	 * Construct a new board.
 	 */
 	public function __construct() {
+		global $SESSION;
+
 		$this->clear_board();
 		$this->set_bonuses();
+
+
+		if (isset($SESSION->board_data)) {
+			$this->unserialize($SESSION->board_data);
+		}
 	}
 
 	/**
@@ -123,6 +130,47 @@ class Board {
 				if ($row == 7 && $column == 7) {
 					$cell->set_bonus(Cell::CELL_BONUS_ST);
 				}
+			}
+		}
+	}
+
+	/**
+	 * Save the board to session.
+	 */
+	public function save() {
+		global $SESSION;
+
+		$SESSION->board_data = $this->serialize();
+	}
+
+	/**
+	 * Serialize the board.
+	 */
+	public function serialize() {
+		$rows = array();
+		foreach ($this->get_rows() as $row) {
+			$columns = array();
+			foreach ($this->get_columns() as $column) {
+				$cell = $this->get_cell($row, $column);
+				$columns[] = $cell->get_value();
+			}
+
+			$rows[] = implode(',', $columns);
+		}
+
+		return implode('|', $rows);
+	}
+
+	/**
+	 * Get a board from session.
+	 */
+	public function unserialize($data) {
+		$rows = explode('|', $data);
+		foreach ($this->get_rows() as $row) {
+			$columns = explode(',', $rows[$row]);
+			foreach ($this->get_columns() as $column) {
+				$cell = $this->get_cell($row, $column);
+				$cell->set_value($columns[$column]);
 			}
 		}
 	}

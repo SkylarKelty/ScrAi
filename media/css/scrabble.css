@@ -2,8 +2,13 @@
 	padding-top: 60px;
 }
 
+#cellinput {
+	padding: 10px 0;
+	display: none;
+}
+
 table {
-	margin-left: 185px;
+	margin-left: 270px;
 }
 
 table td {

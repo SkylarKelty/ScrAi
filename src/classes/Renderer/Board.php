@@ -24,7 +24,11 @@ class Board {
 				if (!empty($class)) {
 					$class = " class=\"bonus_{$class}\"";
 				}
-				echo "<td{$class}>" . $cell->get_value(). "</td>";
+
+				$htmlrow = " data-row=\"{$row}\"";
+				$htmlcolumn = " data-column=\"{$column}\"";
+
+				echo "<td{$class}{$htmlrow}{$htmlcolumn}>" . $cell->get_value(). "</td>";
 			}
 			echo '</tr>';
 		}
